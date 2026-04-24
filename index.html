@@ -226,6 +226,102 @@
     .footer a:hover {
       color: #1a1a1a;
     }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Project card hover effects */
+    .project a {
+      padding: 16px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project a:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Currently section */
+    .currently {
+      margin-bottom: 48px;
+      padding: 20px 24px;
+      background: #f5f5f5;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 32px;
+    }
+
+    .currently-item {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .currently-label {
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-right: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .currently {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Micro-interactions on dropdowns */
+    details .experience-role,
+    details .experience-desc {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+      padding: 0;
+    }
+
+    details[open] .experience-role {
+      max-height: 50px;
+      opacity: 1;
+      margin-bottom: 8px;
+    }
+
+    details[open] .experience-desc {
+      max-height: 300px;
+      opacity: 1;
+      padding: 0 0 16px 0;
+    }
+
+    details summary {
+      transition: color 0.15s, padding-left 0.2s;
+    }
+
+    details[open] summary {
+      color: #0066ff;
+      padding-left: 4px;
+    }
+
+    details[open] summary::after {
+      color: #0066ff;
+    }
+
+    details[open] {
+      background: #fafafa;
+      border-radius: 4px;
+      padding: 0 8px;
+      transition: background 0.3s, padding 0.3s;
+    }
   </style>
 </head>
 <body>
@@ -239,7 +335,14 @@
     <h1>Yug Meghani</h1>
     <p class="blurb">4 years of experience in corporate treasury across Wall Street. Now focused on building intelligent AI systems to automate manual financial processes — applying generative AI to financial markets, automation, and decision-making. Here is a portfolio of my experiences and some projects I have built.</p>
 
-    <div class="columns">
+    <div class="currently fade-in">
+      <div class="currently-item"><span class="currently-label">Reading:</span> Think Like a Monk by Jay Shetty</div>
+      <div class="currently-item"><span class="currently-label">Building:</span> Automated AI processes for manual workstreams at American Express</div>
+      <div class="currently-item"><span class="currently-label">Dealing:</span> Cards for Texas Hold'em monthly in Brooklyn</div>
+      <div class="currently-item"><span class="currently-label">Location:</span> New York City</div>
+    </div>
+
+    <div class="columns fade-in">
 
       <div class="column">
         <h2>Projects</h2>
@@ -301,16 +404,29 @@
 
     </div>
 
-    <div class="resume">
+    <div class="resume fade-in">
       <a href="resume.pdf" target="_blank" rel="noopener">View Resume &rarr;</a>
     </div>
 
-    <div class="footer">
+    <div class="footer fade-in">
       <a href="mailto:yugmeghani@gmail.com">Email</a>
       <a href="https://www.linkedin.com/in/yug-meghani-25a196193" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/yugmeghani" target="_blank" rel="noopener">GitHub</a>
     </div>
 
   </div>
+
+  <script>
+    // Scroll animation observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>

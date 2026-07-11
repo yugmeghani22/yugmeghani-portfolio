@@ -285,6 +285,70 @@
       }
     }
 
+    /* Skills marquee */
+    .skills-section {
+      margin-bottom: 48px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .skills-section::before,
+    .skills-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 60px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .skills-section::before {
+      left: 0;
+      background: linear-gradient(to right, #F5F3F0, transparent);
+    }
+
+    .skills-section::after {
+      right: 0;
+      background: linear-gradient(to left, #F5F3F0, transparent);
+    }
+
+    .skills-track {
+      display: flex;
+      gap: 12px;
+      animation: scroll-left 25s linear infinite;
+      width: max-content;
+    }
+
+    .skills-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .skill-pill {
+      flex-shrink: 0;
+      padding: 8px 18px;
+      background: #ffffff;
+      border: 1px solid #D4CFC9;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #4A3F35;
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .skill-pill:hover {
+      border-color: #1C3A5F;
+      color: #1C3A5F;
+      background: #E8EDF3;
+    }
+
     /* Micro-interactions on dropdowns */
     details .experience-role,
     details .experience-desc {
@@ -471,6 +535,38 @@
       <div class="currently-item"><span class="currently-label">Building:</span> Automated AI processes for manual workstreams at American Express</div>
       <div class="currently-item"><span class="currently-label">Dealing:</span> Cards for Texas Hold'em monthly in Brooklyn</div>
       <div class="currently-item"><span class="currently-label">Location:</span> New York City</div>
+    </div>
+
+    <div class="skills-section fade-in">
+      <div class="skills-track">
+        <span class="skill-pill">Financial Statements</span>
+        <span class="skill-pill">Discounted Cash Flows Analysis</span>
+        <span class="skill-pill">Financial Modeling</span>
+        <span class="skill-pill">Cash Flows Forecasting</span>
+        <span class="skill-pill">Scenario Analysis</span>
+        <span class="skill-pill">Variance Analysis</span>
+        <span class="skill-pill">Alteryx Designer</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">GenAi (Claude & ChatGPT)</span>
+        <span class="skill-pill">LCR & ILST (Cash Analysis)</span>
+        <span class="skill-pill">Executive Decks</span>
+        <span class="skill-pill">Workflow Automations</span>
+        <span class="skill-pill">Microsoft Office</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="skill-pill">Financial Statements</span>
+        <span class="skill-pill">Discounted Cash Flows Analysis</span>
+        <span class="skill-pill">Financial Modeling</span>
+        <span class="skill-pill">Cash Flows Forecasting</span>
+        <span class="skill-pill">Scenario Analysis</span>
+        <span class="skill-pill">Variance Analysis</span>
+        <span class="skill-pill">Alteryx Designer</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">GenAi (Claude & ChatGPT)</span>
+        <span class="skill-pill">LCR & ILST (Cash Analysis)</span>
+        <span class="skill-pill">Executive Decks</span>
+        <span class="skill-pill">Workflow Automations</span>
+        <span class="skill-pill">Microsoft Office</span>
+      </div>
     </div>
 
     <div class="columns fade-in">
